@@ -4,7 +4,6 @@ package udem.edu.co.heroes.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import udem.edu.co.heroes.entities.Heroes;
-import udem.edu.co.heroes.entities.Poderes;
 import udem.edu.co.heroes.repository.HeroesRepository;
 import udem.edu.co.heroes.service.HeroesService;
 
@@ -28,8 +27,8 @@ public class HeroesServiceImpl implements HeroesService {
     }
 
     @Override
-    public Heroes createHeroes(){
-        return null;
+    public Heroes createHeroes(Heroes heroes){
+        return (Heroes) heroesRepository.save(heroes);
     }
     @Override
     public Heroes UpdateHeroes(){

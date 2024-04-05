@@ -3,10 +3,10 @@ package udem.edu.co.heroes.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import udem.edu.co.heroes.entities.Heroes;
-import udem.edu.co.heroes.entities.Poderes;
 import udem.edu.co.heroes.service.HeroesService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -19,12 +19,12 @@ public class HeroesController {
     }
 
     @GetMapping("/heroes/")
-    public List<Heroes> findAllHeroes() {
-        return this.heroesService.findAllHeroes();
+    public Heroes findAllHeroes() {
+        return (Heroes) this.heroesService.findAllHeroes();
     }
 
     @GetMapping("/heroes/{name}")
-    public Heroes findHeroesById(@RequestParam("name") String name) {
+    public Optional<Heroes> findHeroesById(@RequestParam("name") String name) {
         return this.heroesService.findByIdHeroes(name);
     }
 

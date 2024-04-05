@@ -23,25 +23,34 @@ public class PoderesServiceImpl implements PoderesService{
     }
 
     @Override
-    public Poderes createPoderes(){
-        poderesRepository.setPoderes();
-        return poderesRepository.getPoderes();
+    public Poderes createPoderes(Poderes poderes){
+        poderesRepository.save()
+        return poderesRepository.get();
+    }
+
+    @Override
+    public Poderes UpdatePoderes() {
+        return null;
+    }
+
+    @Override
+    public Poderes deletePoderes(String name) {
+        return null;
     }
 
     @Override
     public Poderes UpdatePoderes(Poderes updatedPoderes){
-        poderesRepository.updatePoderes(updatedPoderes);
+        poderesRepository.save(updatedPoderes);
         return updatedPoderes;
     }
 
     @Override
     public Poderes DeletePoderes(String name){
-        Poderes poderesToDelete = poderesRepository.findByPoderes(name);
-        if (poderesToDelete != null) {
-            poderesRepository.delete(poderesToDelete);
-        } else {
-            throw new PoderesNotFoundException("No se encontraron poderes con el ID especificado: " + name);
-        }
+        Poderes poderesToDelete = new Poderes();
+        poderesToDelete.setName(name);
+        return poderesRepository.delete(poderesToDelete);
+
+
         return poderesToDelete;
     }
 }
